@@ -1,35 +1,3 @@
-/*var close = document.getElementsByClassName("closebtn");
-var i;
-
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function(){
-    var div = this.parentElement;
-    div.style.opacity = "0";
-    setTimeout(function(){ div.style.display = "none"; }, 600);
-  }
-}*/
-
-
-
-
-
-function savenotify(type,message){
-  (()=>{
-    let n = document.createElement('div');
-    let id = Math.random().toString(36).substr(2,10);
-    n.setAttribute('id',id);
-    n.classList.add('notification',type);
-    n.innerText = message;
-    document.getElementById('notification-area').appendChild(n);
-    document.getElementById('save-btn').className += ' btn-disabled';
-    setTimeout(() => {
-      document.getElementById('save-btn').className = document.getElementById('save-btn').className.replace(' btn-disabled','');
-      $('#'+id).bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function(e) { $(this).remove(); });
-    }, 5000);
-  })();
-}
-
-
 function notify(type,message){
   (()=>{
     let n = document.createElement('div');

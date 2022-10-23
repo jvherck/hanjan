@@ -8,15 +8,20 @@
 
 body {
     font-family: 'Ginto', sans-serif;
-    overflow: hidden;
-    height: 98vh;
+    overflow: auto;
+    min-height: 98vh;
     display: flex;
     align-content: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    background-image: radial-gradient(ellipse at top, lightsteelblue, steelblue);
+    /*background-image: radial-gradient(ellipse farthest-side at bottom, lightsteelblue, steelblue);*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: steelblue;
     color: #fff;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -25,10 +30,14 @@ body {
 #hannah {
     font-size: 4em;
     display: flex;
+    position: relative;
     justify-content: center;
     align-content: center;
     align-items: center;
     flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    margin: 2vh;
 }
 
 .handsimg {
@@ -48,8 +57,96 @@ body {
     text-align: center;
 }
 
-.affirmation.author {
+.affirmation:hover .savebtncls {
+    visibility: visible;
+}
+.affirmation:hover .savebtn:before {
+    visibility: visible;
+}
+
+.affirmationauthor {
     font-style: italic;
     font-size: 1em;
 }
 
+#savedquotes {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 9vh 0.25vw 3vh;
+    max-width: 95vw;
+}
+#savedquotes>li{
+    list-style-type: none;
+    margin: 0 0 0; /* 2vh 0 2vh */
+    padding: 0 5vw 0; /* 2em 5vw 0 */
+    min-width: 80vw;
+}
+#savedquotes > li > p {
+    width:100%;
+    border-bottom:0.2vh solid white;
+    position:static;
+    margin:7.5vh;
+    min-width: 60vw;
+}
+#savedquotes > li:nth-child(2) > p {
+    width:100%;
+    border-bottom: none;
+    position:static;
+    margin: 7.5vh 7.5vh 2.5vh;
+}
+
+
+
+
+.savebtncls {
+    visibility: hidden;
+    cursor: pointer;
+    animation: ease-in 1s;
+}
+.savebtncls a {
+    padding: 0.5vw;
+}
+
+.savebtn {
+    visibility: hidden;
+    font-size: 1.5em;
+    cursor: pointer;
+    width: 0.75em;
+}
+
+.savebtn:before {
+    content: "\2606";
+    position: relative;
+    visibility: hidden;
+    bottom: 0.6em;
+    color: black;
+}
+.savebtn:checked:before {
+    content: "\2605";
+    position: relative;
+    bottom: 0.6em;
+    color: gold;
+    filter: blur(50%);
+}
+
+
+#backToTop{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: none;
+    z-index: 999;
+    border-radius: 15px;
+    border: none;
+    font-size: 3.5em;
+    background-color: transparent;
+    -webkit-filter: grayscale(100%) contrast(10);
+    filter: grayscale(100%) contrast(10);
+    cursor: pointer;
+}
