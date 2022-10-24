@@ -1,7 +1,8 @@
-const index_page = "/index.html";
+let quotes_page;
+if ($(location).attr("hostname") === "localhost"){quotes_page="/hanjan/quotes.html"}else{quotes_page="/quotes.html"}
 
 function loadAffirmation() {
-  if ($(location).attr('pathname') === index_page) {
+  if ($(location).attr('pathname') === quotes_page) {
     const settings = {
       "crossDomain": true,
       "url": "https://type.fit/api/quotes",
@@ -19,7 +20,7 @@ function loadAffirmation() {
 }
 
 function currentQuoteSaved(){
-  if ($(location).attr('pathname') === index_page){
+  if ($(location).attr('pathname') === quotes_page){
     const text = document.getElementsByClassName("affirmationtext")[0].innerText;
     const quote = getQuote(getQuoteId(text));
     if (quote != null){
@@ -73,7 +74,7 @@ function getQuote(id){
 $(document).on('change', '.savebtn',function() {
   let text, author;
   const node = this.parentNode.parentNode.childNodes;
-  if ($(location).attr("pathname") === index_page){
+  if ($(location).attr("pathname") === quotes_page){
     text = node.item(1).innerText;
     author = node.item(5).innerText;
   } else {
@@ -129,7 +130,7 @@ function showSavedQuotes() {
   }
 }
 
-function bouncing_navbar(){
+/*function bouncing_navbar(){
   let i, stop;
   i = 1;
   stop = 4; //num elements
@@ -139,9 +140,9 @@ function bouncing_navbar(){
     }
     $('#len'+(i++)).toggleClass('bounce');
   }, 500);
-}
+}*/
 
-function scroll_thing(){
+function backToTopFunc(){
   const goToTop = document.getElementById('backToTop');
   window.addEventListener("scroll", function(){
     if(window.scrollY===0){
@@ -153,7 +154,22 @@ function scroll_thing(){
   });
 }
 
+const speed = "slow";
+function body_swap(){
+  $('body').fadeIn(speed, function() {
+    $('a[href], button[href]').click(function(event) {
+      const url = $(this).attr('href');
+      if (url.indexOf('#') === 0 || url.indexOf('javascript:') === 0) return;
+      event.preventDefault();
+      $('body').fadeOut(speed, function() {
+          window.location = url;
+      });
+    });
+  });
+}
+
 $(document).ready(function(){
   loadAffirmation();
-  scroll_thing();
+  backToTopFunc();
+  body_swap();
 });

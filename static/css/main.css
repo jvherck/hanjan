@@ -4,7 +4,16 @@
 }
 
 
-
+html {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: steelblue;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
 
 body {
     font-family: 'Ginto', sans-serif;
@@ -15,16 +24,16 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
 
-    /*background-image: radial-gradient(ellipse farthest-side at bottom, lightsteelblue, steelblue);*/
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: steelblue;
-    color: #fff;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+::-moz-selection { /* Code for Firefox */
+  color: steelblue;
+  background: white;
+}
+
+::selection {
+  color: steelblue;
+  background: white;
 }
 
 #hannah {
@@ -38,6 +47,9 @@ body {
     flex-direction: column;
     text-align: center;
     margin: 2vh;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 0.15em;
 }
 
 .handsimg {
@@ -92,7 +104,6 @@ body {
     border-bottom:0.2vh solid white;
     position:static;
     margin:7.5vh;
-    min-width: 60vw;
 }
 #savedquotes > li:nth-child(2) > p {
     width:100%;
@@ -149,4 +160,8 @@ body {
     -webkit-filter: grayscale(100%) contrast(10);
     filter: grayscale(100%) contrast(10);
     cursor: pointer;
+}
+
+.showMain{
+    display: contents;
 }
